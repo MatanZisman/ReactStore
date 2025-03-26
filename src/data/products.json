@@ -1,0 +1,68 @@
+[
+    {
+      "name": "Bamba",
+      "image": "./src/img/bamba.png",
+      "price": 3.5
+    },
+    {
+      "name": "Bread",
+      "image": "./src/img/bread.png",
+      "price": 2.0
+    },
+    {
+      "name": "Doggo",
+      "image": "./src/img/doggo.png",
+      "price": 150.0
+    },
+    {
+      "name": "Entei",
+      "image": "./src/img/entei.png",
+      "price": 999999.0
+    },
+    {
+      "name": "Slippers",
+      "image": "./src/img/slippers.png",
+      "price": 20.0
+    },
+    {
+      "name": "Plane",
+      "image": "./src/img/plane.png",
+      "price": 500000.0
+    },
+    {
+      "name": "Messi Shirt",
+      "image": "./src/img/messi-shirt.png",
+      "price": 120.0
+    },
+    {
+      "name": "RefreshingShum",
+      "image": "./src/img/refreshingshum.png",
+      "price": 5.0
+    },
+    {
+      "name": "Thiccachu",
+      "image": "./src/img/thiccachu.png",
+      "price": 999.0
+    },
+    {
+      "name": "Kuskus",
+      "image": "./src/img/kuskus.png",
+      "price": 8.0
+    },
+    {
+      "name": "Jarboa",
+      "image": "./src/img/jarboa.png",
+      "price": 200.0
+    },
+    {
+      "name": "Coca-Cola",
+      "image": "./src/img/cocacola.png",
+      "price": 1.5
+    },
+    {
+      "name": "Chocolate",
+      "image": "./src/img/chocolate.png",
+      "price": 4.0
+    }
+  ]
+  
