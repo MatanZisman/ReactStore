@@ -27,7 +27,7 @@ const AnimalCard: React.FC<productCardProps> = ({name, image, price}) => {
         
         {/* Price of the animal */}
         <Typography variant="body1" color="textSecondary" sx={{ textAlign: "center", marginBottom: "16px" }}>
-            {price}
+            {price}$
         </Typography>
 
         {/* Button section */}

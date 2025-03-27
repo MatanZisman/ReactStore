@@ -1,0 +1,12 @@
+[
+    {
+      "name": "Lion",
+      "image": "lion.jpg",
+      "price": 299
+    },
+    {
+      "name": "Tiger",
+      "image": "tiger.jpg",
+      "price": 350
+    }
+  ]

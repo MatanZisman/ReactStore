@@ -1,10 +1,10 @@
 import './App.css'
 import { Box } from "@mui/material";
 import React, {useEffect, useState } from "react";
-import Header from "./Header";
-import SubHeader from './SubHeader';
+import Header from "./components/Header";
+import SubHeader from './components/SubHeader';
 import productsData from "./data/products.json"
-import AnimalCard from './Card';
+import AnimalCard from './components/Card';
 
 interface Product {
   name: string;
