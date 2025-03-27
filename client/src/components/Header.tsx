@@ -5,7 +5,7 @@ let currentAmount : number = 0;
 
 const Header: React.FC = () => {
   return (
-    <AppBar position="static" color="primary"  >
+    <AppBar position="static" color="primary" sx={{ width: "100%"  }}>
       <Toolbar>
         {/* Logo / Title */}
         <Typography variant="h6" sx={{ flexGrow: 10, textAlign: "left" }}>

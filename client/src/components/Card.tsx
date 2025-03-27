@@ -8,6 +8,28 @@ interface productCardProps {
 }
 
 const AnimalCard: React.FC<productCardProps> = ({name, image, price}) => {
+
+  const handleBuy = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/add-to-cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, image, price }), // Send product details
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add item to cart");
+      }
+
+      const data = await response.json();
+      console.log("Item added:", data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <Card sx={{ maxWidth: 150, margin: "20px", borderRadius: "8px", boxShadow: 3, display: "inline-flex", flexDirection: "column" }}>
       {/* Image of the animal */}
@@ -38,7 +60,7 @@ const AnimalCard: React.FC<productCardProps> = ({name, image, price}) => {
           </Button>
 
           {/* Right button: Buy */}
-          <Button variant="contained" color="primary" sx={{flexGrow: 1, fontSize: 12}}>
+          <Button variant="contained" color="primary" onClick={handleBuy} sx={{flexGrow: 1, fontSize: 12}}>
             Buy
           </Button>
         </Box>

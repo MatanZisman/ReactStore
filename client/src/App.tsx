@@ -1,40 +1,19 @@
 import './App.css'
-import { Box } from "@mui/material";
-import React, {useEffect, useState } from "react";
+import React, {useState} from "react";
 import Header from "./components/Header";
 import SubHeader from './components/SubHeader';
-import productsData from "./data/products.json"
-import AnimalCard from './components/Card';
-
-interface Product {
-  name: string;
-  image: string;
-  price: number;
-}
+import Home from './components/Home';
+import Cart from './components/Cart';
 
 const App: React.FC = () => {
 
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    // Load products from JSON
-    setProducts(productsData);
-    console.log(productsData);
-  }, []);
-
-  
+  const [activeTab, setActiveTab] = useState<"home" | "cart">("home");
 
   return (
     <>
       <Header/>
-      <SubHeader/>
-      <>
-        <Box>
-          {products.map((product, index) => (
-            <AnimalCard key={index} name={product.name} image={product.image} price={product.price}
-          />))}
-        </Box>
-      </>
+      <SubHeader setActiveTab={setActiveTab} />
+      {activeTab === "home" ? <Home/> : <Cart/>}
     </>
   )
 }

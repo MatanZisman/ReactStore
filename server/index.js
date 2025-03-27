@@ -37,7 +37,17 @@ app.post("/add-to-cart", (req, res) => {
       cart = JSON.parse(data);
     }
 
-    cart.push(newItem);
+    // Check if the item already exists in the cart
+    const existingItem = cart.find(item => item.name === newItem.name);
+
+    if (existingItem) {
+      // If found, increase the quantity
+      existingItem.quantity += 1;
+    } else {
+      // If not found, add the item with quantity = 1
+      newItem.quantity = 1;
+      cart.push(newItem);
+    }
 
     fs.writeFile("cart.json", JSON.stringify(cart, null, 2), (err) => {
       if (err) {

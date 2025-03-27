@@ -1,12 +1,14 @@
 [
-    {
-      "name": "Lion",
-      "image": "lion.jpg",
-      "price": 299
-    },
-    {
-      "name": "Tiger",
-      "image": "tiger.jpg",
-      "price": 350
-    }
-  ]
+  {
+    "name": "Bamba",
+    "image": "./src/img/bamba.png",
+    "price": 3.5,
+    "quantity": 3
+  },
+  {
+    "name": "Bread",
+    "image": "./src/img/bread.png",
+    "price": 2,
+    "quantity": 1
+  }
+]
