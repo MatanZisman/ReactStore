@@ -1,11 +1,6 @@
 import React from "react";
 import { Card, CardMedia, CardContent, Typography, Button, Box } from "@mui/material";
-
-interface productCardProps {
-    name: string;
-    image: string;
-    price: number;
-}
+import { productCardProps } from "../types/productCardProps";
 
 const AnimalCard: React.FC<productCardProps> = ({name, image, price}) => {
 

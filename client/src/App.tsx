@@ -8,7 +8,6 @@ import Cart from './components/Cart';
 const App: React.FC = () => {
 
   const [activeTab, setActiveTab] = useState<"home" | "cart">("home");
-
   return (
     <>
       <Header/>

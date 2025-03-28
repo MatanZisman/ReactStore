@@ -1,9 +1,6 @@
 import React from "react";
 import { AppBar, Button } from "@mui/material";
-
-interface SubHeaderProps {
-  setActiveTab: (tab: "home" | "cart") => void;
-}
+import { SubHeaderProps } from "../types/SubHeaderProps";
 
 const SubHeader:  React.FC<SubHeaderProps> = ({ setActiveTab }) =>  {
   return (

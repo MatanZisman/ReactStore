@@ -1,14 +1,26 @@
 [
   {
-    "name": "Bamba",
-    "image": "./src/img/bamba.png",
-    "price": 3.5,
-    "quantity": 3
+    "name": "Plane",
+    "image": "./src/img/plane.png",
+    "price": 500000,
+    "quantity": 1
   },
   {
-    "name": "Bread",
-    "image": "./src/img/bread.png",
-    "price": 2,
+    "name": "Entei",
+    "image": "./src/img/entei.png",
+    "price": 999999,
     "quantity": 1
+  },
+  {
+    "name": "Slippers",
+    "image": "./src/img/slippers.png",
+    "price": 20,
+    "quantity": 1
+  },
+  {
+    "name": "Coca-Cola",
+    "image": "./src/img/cocacola.png",
+    "price": 1.5,
+    "quantity": 5
   }
 ]

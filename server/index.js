@@ -26,6 +26,15 @@ app.get("/cart", (req, res) => {
   });
 });
 
+app.get("/cart", (req, res) => {
+  fs.readFile("cart.json", "utf8", (err, data) => {
+    if (err) {
+      return res.status(500).json({ message: "Failed to read cart." });
+    }
+    res.status(200).json(JSON.parse(data));
+  });
+});
+
 
 // API route
 app.post("/add-to-cart", (req, res) => {

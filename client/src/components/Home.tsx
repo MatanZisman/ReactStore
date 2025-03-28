@@ -2,12 +2,7 @@ import { Box } from "@mui/material";
 import productsData from "../data/products.json"
 import AnimalCard from './Card';
 import React, {useState, useEffect} from "react";
-
-interface Product {
-  name: string;
-  image: string;
-  price: number;
-}
+import { Product } from "../types/Product";
 
 const Home: React.FC = () => {
 
@@ -16,7 +11,6 @@ const Home: React.FC = () => {
     useEffect(() => {
       // Load products from JSON
       setProducts(productsData);
-      console.log(productsData);
     }, []);
 
   return (
