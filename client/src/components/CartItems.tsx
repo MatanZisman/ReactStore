@@ -1,9 +1,9 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CartItemButtons from "./CartItemButtons";
 import { CartItem } from "../types/CartItem";
 
-const CartItemComponent: React.FC<{ item: CartItem }> = ({ item }) => {
-  
+const CartItemComponent: React.FC<{ item: CartItem, refreshCart: () => void }> = ({ item, refreshCart }) => {
+
   const cartItemBoxStyles = {
     display: "flex",
     alignItems: "center",
@@ -38,7 +38,7 @@ const CartItemComponent: React.FC<{ item: CartItem }> = ({ item }) => {
         </Box>
       </Box>
 
-      < CartItemButtons item = { item }/>
+      < CartItemButtons item = { item } refreshCart = { refreshCart }/>
 
     </Box>
   );

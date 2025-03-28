@@ -69,6 +69,87 @@ app.post("/add-to-cart", (req, res) => {
   });
 });
 
+app.post("/decrease-from-cart", (req, res) => {
+  const { name } = req.body;
+  
+  fs.readFile("cart.json", "utf8", (err, data) => {
+    let cart = [];
+    if (!err && data) {
+      cart = JSON.parse(data);
+    }
+
+    const existingItem = cart.find(item => item.name === name);
+
+    if (existingItem.quantity === 1) {
+
+      cart = cart.filter((item) => item.name !== name);
+
+    } else {
+
+      existingItem.quantity = existingItem.quantity - 1;
+    }
+
+    fs.writeFile("cart.json", JSON.stringify(cart, null, 2), (err) => {
+      if (err) {
+        console.error("Error writing file:", err);
+        return res.status(500).json({ message: "Failed to add item." });
+      }
+
+      res.status(200).json({ message: "Item quantity in cart decreased." });
+    });
+  });
+});
+
+app.post("/increase-in-cart", (req, res) => {
+  const { name } = req.body;
+  
+  fs.readFile("cart.json", "utf8", (err, data) => {
+    let cart = [];
+    if (!err && data) {
+      cart = JSON.parse(data);
+    }
+
+    const existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+
+      existingItem.quantity = existingItem.quantity + 1;
+
+    } else {
+
+      return res.status(500).json({ message: "Item was not found."})
+    }
+
+    fs.writeFile("cart.json", JSON.stringify(cart, null, 2), (err) => {
+      if (err) {
+        console.error("Error writing file:", err);
+        return res.status(500).json({ message: "Failed to increase item quantity." });
+      }
+
+      res.status(200).json({ message: "Item quantity in cart was increased." });
+    });
+  });
+});
+
+app.post("/remove-from-cart", (req, res) => {
+  const { name } = req.body;
+
+  fs.readFile("cart.json", "utf8", (err, data) => {
+    if (err) return res.status(500).json({ error: "Read error" });
+
+    let cart = JSON.parse(data);
+
+    cart = cart.filter((item) => item.name !== name);
+
+    fs.writeFile("cart.json", JSON.stringify(cart, null, 2), (err) => {
+      if (err) return res.status(500).json({ error: "Write error"});
+
+      res.status(200).json({ message: "Item removed" });
+    } )
+  })
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

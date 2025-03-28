@@ -7,11 +7,15 @@ const Cart: React.FC = () => {
   
   const [items, setItems] = useState<CartItem[]>([]);
 
-  useEffect(() => {
+  const refreshCart = async () => {
     fetch("http://localhost:5000/cart")
-      .then((res) => res.json())
-      .then((data) => setItems(data))
-      .catch((err) => console.error("Error fetching cart:", err));
+    .then((res) => res.json())
+    .then((data) => setItems(data))
+    .catch((err) => console.error("Error fetching cart:", err));
+  }
+  
+  useEffect(() => {
+    refreshCart();
   }, []);
 
   const renderEmptyMessage = () => {
@@ -34,7 +38,7 @@ const Cart: React.FC = () => {
       </Typography>
 
       {items.map((item, index) => (
-        <CartItems key={index} item={item} />
+        <CartItems key={index} item={item} refreshCart={refreshCart} />
       ))}
 
       {renderEmptyMessage()}
