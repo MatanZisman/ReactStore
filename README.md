@@ -85,7 +85,9 @@ Server should run at `http://localhost:5000`
 
 ## 📸 Screenshots
 
-
+![image](https://github.com/user-attachments/assets/11fa71c8-bba2-4334-9365-78b22f7fd5c4)
+![image](https://github.com/user-attachments/assets/b1c02e30-2948-4664-beee-b815c65def80)
+![image](https://github.com/user-attachments/assets/5ca7bdb4-452e-4a58-ba6a-6a7741554e42)
 
 ---
 
