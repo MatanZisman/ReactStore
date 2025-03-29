@@ -13,11 +13,12 @@ const Home: React.FC = () => {
       setProducts(productsData);
     }, []);
 
+
   return (
     <>
       <Box>
         {products.map((product, index) => (
-        <AnimalCard key={index} name={product.name} image={product.image} price={product.price}
+        <AnimalCard key={index} name={product.name} image={product.image} price={product.price} description={product.description}
         />))}
       </Box>
     </>

@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import { Card, CardMedia, CardContent, Typography, Button, Box } from "@mui/material";
 import { productCardProps } from "../types/productCardProps";
+import  DetailsDialog from "./DetailsDialog";
 
-const AnimalCard: React.FC<productCardProps> = ({name, image, price}) => {
+const AnimalCard: React.FC<productCardProps> = ({name, image, price, description}) => {
+
+  const [dialogStatus, setDialogStatus] = useState<"open" | "close">("close")
 
   const handleBuy = async () => {
     try {
@@ -50,7 +53,7 @@ const AnimalCard: React.FC<productCardProps> = ({name, image, price}) => {
         {/* Button section */}
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           {/* Left button: Details */}
-          <Button variant="outlined" color="primary" sx={{fontSize: 12, marginLeft: "-8px", marginRight: "8px"}}>
+          <Button variant="outlined" color="primary" onClick= {() => setDialogStatus("open")} sx={{fontSize: 12, marginLeft: "-8px", marginRight: "8px"}}>
             Details
           </Button>
 
@@ -60,6 +63,9 @@ const AnimalCard: React.FC<productCardProps> = ({name, image, price}) => {
           </Button>
         </Box>
       </CardContent>
+
+      {dialogStatus === "open" ? <DetailsDialog name = { name } description = { description } setDialogStatus={ setDialogStatus }/> : null }
+
     </Card>
   );
 };
