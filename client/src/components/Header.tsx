@@ -1,9 +1,7 @@
 import React from "react";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 
-let currentAmount : number = 0;
-
-const Header: React.FC = () => {
+const Header: React.FC<{ wallet: number }> = ({ wallet }) => {
   return (
     <AppBar position="static" color="primary" sx={{ width: "100%"  }}>
       <Toolbar>
@@ -12,7 +10,7 @@ const Header: React.FC = () => {
         ZooStore
         </Typography>
         <Typography> 
-            Current amount: {currentAmount}
+            Current amount:{ wallet }
         </Typography>
         </Toolbar>
     </AppBar>

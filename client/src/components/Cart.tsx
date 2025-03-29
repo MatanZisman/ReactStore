@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { CartItem } from "../types/CartItem";
 import CartItems from "./CartItems";
 
-const Cart: React.FC = () => {
-  
+const Cart: React.FC<{ wallet: number, setWallet: React.Dispatch<React.SetStateAction<number>> }> = ({ wallet, setWallet}) => {
+
   const [items, setItems] = useState<CartItem[]>([]);
 
   const refreshCart = async () => {
@@ -13,6 +13,33 @@ const Cart: React.FC = () => {
     .then((data) => setItems(data))
     .catch((err) => console.error("Error fetching cart:", err));
   }
+
+  const handleOrder = async () => {
+    const total = items.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+  
+    if (wallet < total) {
+      alert("❌ Not enough money!");
+      return;
+    }
+  
+    try {
+      const res = await fetch("http://localhost:5000/order", {
+        method: "POST",
+      });
+  
+      if (!res.ok) throw new Error("Order failed");
+  
+      setWallet(prev => prev - total); // 💸 Deduct!
+      refreshCart();
+      alert("✅ Order placed!");
+    } catch (err) {
+      console.error("❌", err);
+      alert("Order failed.");
+    }
+  };
   
   useEffect(() => {
     refreshCart();
@@ -44,6 +71,12 @@ const Cart: React.FC = () => {
       {renderEmptyMessage()}
 
       {calculatePrice()}
+
+
+      { items.length > 0 && (
+      <Button variant= "contained" onClick={handleOrder}>
+        Order
+      </Button> )}
 
     </Box>
   );

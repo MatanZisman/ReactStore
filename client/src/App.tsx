@@ -7,12 +7,14 @@ import Cart from './components/Cart';
 
 const App: React.FC = () => {
 
+  const [wallet, setWallet] = useState(2000000);
+
   const [activeTab, setActiveTab] = useState<"home" | "cart">("home");
   return (
     <>
-      <Header/>
+      <Header wallet = { wallet }/>
       <SubHeader setActiveTab={setActiveTab} />
-      {activeTab === "home" ? <Home/> : <Cart/>}
+      {activeTab === "home" ? <Home/> : <Cart wallet = { wallet } setWallet = {setWallet}/>}
     </>
   )
 }

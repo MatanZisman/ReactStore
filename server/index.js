@@ -149,6 +149,15 @@ app.post("/remove-from-cart", (req, res) => {
   })
 });
 
+app.post("/order", (req, res) => {
+  fs.writeFile("cart.json", "[]", (err) => {
+    if (err) {
+      console.error("Error clearing cart:", err);
+      return res.status(500).json({ message: "Failed to place order." });
+    }
+    res.status(200).json({ message: "Order placed. Cart cleared." });
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
