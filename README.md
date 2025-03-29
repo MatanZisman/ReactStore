@@ -95,12 +95,12 @@ Server should run at `http://localhost:5000`
 
 ---
 
-## 🐾 Special Thanks
+## Inspired by
 
-To Bamba, Doggo, Entei, and Thiccachu for keeping it weird.
+AsafL910 (https://github.com/AsafL910/ReactTraining)
 
 ---
 
 ## 📜 License
 
-MIT — do whatever you want, just don't sell my doggo.
+Open for all.
