@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import { Card, CardMedia, CardContent, Typography, Button, Box } from "@mui/material";
 import { productCardProps } from "../types/productCardProps";
 import  DetailsDialog from "./DetailsDialog";
+import InfoIcon from "@mui/icons-material/Info";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const AnimalCard: React.FC<productCardProps> = ({name, image, price, description}) => {
 
@@ -29,7 +31,7 @@ const AnimalCard: React.FC<productCardProps> = ({name, image, price, description
   };
 
   return (
-    <Card sx={{ maxWidth: 150, margin: "20px", borderRadius: "8px", boxShadow: 3, display: "inline-flex", flexDirection: "column" }}>
+    <Card sx={{ width: "250px", margin: "10px", borderRadius: "8px", boxShadow: 3, display: "inline-flex", flexDirection: "column" }}>
       {/* Image of the animal */}
       <CardMedia
         component="img"
@@ -41,7 +43,7 @@ const AnimalCard: React.FC<productCardProps> = ({name, image, price, description
       
       <CardContent>
         {/* Name of the animal */}
-        <Typography variant="h6" component="div" sx={{ textAlign: "center", fontWeight: "bold" }}>
+        <Typography variant="h6" component="div" sx={{ textAlign: "center", marginBottom: "8px" }}>
           {name}
         </Typography>
         
@@ -53,13 +55,26 @@ const AnimalCard: React.FC<productCardProps> = ({name, image, price, description
         {/* Button section */}
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           {/* Left button: Details */}
-          <Button variant="outlined" color="primary" onClick= {() => setDialogStatus("open")} sx={{fontSize: 12, marginLeft: "-8px", marginRight: "8px"}}>
-            Details
+          <Button
+            variant="contained" // Use "contained" to apply a background color
+            sx={{
+              backgroundColor: " #9c27b0 ", // Set background color
+              color: "white", // Set text color
+              fontSize: 12,
+              marginLeft: "-8px",
+              marginRight: "8px",
+              "&:hover": { backgroundColor: "#6a1b9a" }, // Slightly darker purple on hover
+            }}
+            onClick={() => setDialogStatus("open")}
+          >
+            <InfoIcon sx={{ fontSize: 16, marginRight: "4px" }} />
+             פרטים
           </Button>
 
           {/* Right button: Buy */}
-          <Button variant="contained" color="primary" onClick={handleBuy} sx={{flexGrow: 1, fontSize: 12}}>
-            Buy
+          <Button variant="contained" color="primary" onClick={handleBuy} sx={{flexGrow: 0, fontSize: 12}}>
+            <ShoppingCartIcon sx={{ fontSize: 16, marginRight: "4px", display: "flex", whiteSpace: "nowrap"}} />
+            הוסף לעגלה 
           </Button>
         </Box>
       </CardContent>
