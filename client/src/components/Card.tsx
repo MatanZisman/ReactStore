@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Card, CardMedia, CardContent, Typography, Button, Box } from "@mui/material";
+import { Card, CardMedia, CardContent,CardActions, Typography, Button } from "@mui/material";
 import { productCardProps } from "../types/productCardProps";
 import  DetailsDialog from "./DetailsDialog";
 import InfoIcon from "@mui/icons-material/Info";
@@ -31,57 +31,64 @@ const AnimalCard: React.FC<productCardProps> = ({name, image, price, description
   };
 
   return (
-    <Card sx={{ width: "250px", margin: "10px", borderRadius: "8px", boxShadow: 3, display: "inline-flex", flexDirection: "column" }}>
-      {/* Image of the animal */}
+    <Card elevation={1} sx={{width: 300, height: 345, margin: "10px", borderRadius: 2, display: "inline-flex", flexDirection: "column", }} >
       <CardMedia
-        component="img"
-        alt= {name}
-        height="150"
-        image= {image}
-        sx={{ objectFit: "fill" }}
+        component="img" alt={name} image={image} sx={{height: 140, width: "100%" }}
       />
-      
-      <CardContent>
-        {/* Name of the animal */}
-        <Typography variant="h6" component="div" sx={{ textAlign: "center", marginBottom: "8px" }}>
+    
+      {/* Info Section */}
+      <CardContent sx={{ flexGrow: 1 }}>
+        <Typography
+          variant="h5"
+          component="div"
+          align="center"
+          sx={{ marginBottom: 1 }}
+        >
           {name}
         </Typography>
-        
-        {/* Price of the animal */}
-        <Typography variant="body1" color="textSecondary" sx={{ textAlign: "center", marginBottom: "16px" }}>
-            {price}$
+        <Typography
+          variant="h6"
+          color="textSecondary"
+          align="center"
+          sx={{ marginBottom: 2 }}
+        >
+          {price}$
         </Typography>
-
-        {/* Button section */}
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          {/* Left button: Details */}
-          <Button
-            variant="contained" // Use "contained" to apply a background color
-            sx={{
-              backgroundColor: " #9c27b0 ", // Set background color
-              color: "white", // Set text color
-              fontSize: 12,
-              marginLeft: "-8px",
-              marginRight: "8px",
-              "&:hover": { backgroundColor: "#6a1b9a" }, // Slightly darker purple on hover
-            }}
-            onClick={() => setDialogStatus("open")}
-          >
-            <InfoIcon sx={{ fontSize: 16, marginRight: "4px" }} />
-             פרטים
-          </Button>
-
-          {/* Right button: Buy */}
-          <Button variant="contained" color="primary" onClick={handleBuy} sx={{flexGrow: 0, fontSize: 12}}>
-            <ShoppingCartIcon sx={{ fontSize: 16, marginRight: "4px", display: "flex", whiteSpace: "nowrap"}} />
-            הוסף לעגלה 
-          </Button>
-        </Box>
       </CardContent>
-
-      {dialogStatus === "open" ? <DetailsDialog name = { name } description = { description } setDialogStatus={ setDialogStatus }/> : null }
-
-    </Card>
+    
+      {/* Actions */}
+      <CardActions sx={{ justifyContent: "space-between", paddingX: 2 }}>
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: "#9c27b0",
+            "&:hover": { backgroundColor: "#6a1b9a" },
+          }}
+          onClick={() => setDialogStatus("open")}
+        >
+          <InfoIcon sx={{ fontSize: 16, marginRight: "4px" }} />
+          פרטים
+        </Button>
+    
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleBuy}
+        >
+          <ShoppingCartIcon sx={{ fontSize: 16, marginRight: "4px" }} />
+          הוסף לעגלה
+        </Button>
+      </CardActions>
+    
+      {/* Details Modal */}
+      {dialogStatus === "open" && (
+        <DetailsDialog
+          name={name}
+          description={description}
+          setDialogStatus={setDialogStatus}
+        />
+      )}
+  </Card>
   );
 };
 

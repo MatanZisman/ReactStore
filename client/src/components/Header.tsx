@@ -1,6 +1,6 @@
 import React from "react";
 import { AppBar, Toolbar, Typography } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const Header: React.FC<{ wallet: number }> = ({ wallet }) => {
   return (
@@ -8,9 +8,9 @@ const Header: React.FC<{ wallet: number }> = ({ wallet }) => {
       <Toolbar>
         {/* Logo / Title */}
         <Typography variant="h6" sx={{ flexGrow: 10, textAlign: "left" }}>
-          <HomeIcon sx={{ fontSize: 38, marginRight: "4px" }} />
+          <ShoppingCartIcon color= "action" sx={{ fontSize: 25, marginRight: "4px"  }} />
         </Typography>
-        <Typography> 
+        <Typography fontSize = { 20 }> 
             סכום כולל: { wallet.toFixed(2)}₪
         </Typography>
         </Toolbar>

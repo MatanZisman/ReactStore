@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <>
       <Header wallet = { wallet }/>
-      <SubHeader setActiveTab={setActiveTab} />
+      <SubHeader activeTab = { activeTab } setActiveTab={ setActiveTab }/>
       {activeTab === "home" ? <Home/> : <Cart wallet = { wallet } setWallet = {setWallet}/>}
     </>
   )
