@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
-import { CartItem } from "../types/CartItem";
+import { useCartStore } from "./Store";
 import CartItems from "./CartItems";
 import OrderDialog from "./OrderDialog";
 
 const Cart: React.FC<{ wallet: number, setWallet: React.Dispatch<React.SetStateAction<number>> }> = ({ wallet, setWallet}) => {
 
-  const [items, setItems] = useState<CartItem[]>([]);
-
   const [dialogStatus, setDialogStatus] = useState<"open" | "close">("close");
 
-  const refreshCart = async () => {
-    fetch("http://localhost:5000/cart")
-    .then((res) => res.json())
-    .then((data) => setItems(data))
-    .catch((err) => console.error("Error fetching cart:", err));
-  }
+  const items = useCartStore((state) => state.cart);
+  const clearCart = useCartStore((state) => state.clearCart)
 
   const handleOrder = async () => {
     const total = items.reduce(
@@ -24,29 +18,14 @@ const Cart: React.FC<{ wallet: number, setWallet: React.Dispatch<React.SetStateA
     );
   
     if (wallet < total) {
-      alert("❌ Not enough money!");
+      alert("אין מספיק כסף");
       return;
     }
-  
-    try {
-      const res = await fetch("http://localhost:5000/order", {
-        method: "POST",
-      });
-  
-      if (!res.ok) throw new Error("Order failed");
-  
-      setWallet(prev => prev - total); // 💸 Deduct!
-      refreshCart();
-      setDialogStatus("open");
-    } catch (err) {
-      console.error("❌", err);
-      alert("Order failed.");
-    }
+
+    setWallet(prev => prev - total);
+    setDialogStatus("open");
+    clearCart();
   };
-  
-  useEffect(() => {
-    refreshCart();
-  }, []);
   
   return (
     <Box>
@@ -62,7 +41,7 @@ const Cart: React.FC<{ wallet: number, setWallet: React.Dispatch<React.SetStateA
       {dialogStatus === "open" && <OrderDialog setDialogStatus={setDialogStatus} />} 
 
       {items.map((item, index) => (
-        <CartItems key={index} item={item} refreshCart={refreshCart} />
+        <CartItems key={index} item={item} />
       ))}
     </Box>
   );

@@ -1,7 +1,8 @@
 import React from "react";
 import { Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
+import { OrderDialogProps } from "../types/OrderDialogProps";
 
-const OrderDialog: React.FC<{ setDialogStatus: (tab: "open" | "close") => void }> = ({ setDialogStatus }) => {
+const OrderDialog: React.FC< OrderDialogProps > = ({ setDialogStatus }) => {
   return (
     <Dialog open={true}>
       <DialogTitle sx={{ textAlign: "right" }}>!תתחדש/י</DialogTitle>

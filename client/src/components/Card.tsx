@@ -4,31 +4,13 @@ import { productCardProps } from "../types/productCardProps";
 import  DetailsDialog from "./DetailsDialog";
 import InfoIcon from "@mui/icons-material/Info";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useCartStore } from "./Store";
 
 const AnimalCard: React.FC<productCardProps> = ({name, image, price, description}) => {
 
   const [dialogStatus, setDialogStatus] = useState<"open" | "close">("close")
 
-  const handleBuy = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/add-to-cart", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, image, price }), // Send product details
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to add item to cart");
-      }
-
-      const data = await response.json();
-      console.log("Item added:", data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  const addToCart = useCartStore((state) => state.addToCart);
 
   return (
     <Card elevation={1} sx={{width: 300, height: 345, margin: "10px", borderRadius: 2, display: "inline-flex", flexDirection: "column", }} >
@@ -73,7 +55,7 @@ const AnimalCard: React.FC<productCardProps> = ({name, image, price, description
         <Button
           variant="contained"
           color="primary"
-          onClick={handleBuy}
+          onClick={() => addToCart({ name: name, price: price, quantity: 1, image: image})}
         >
           <ShoppingCartIcon sx={{ fontSize: 16, marginRight: "4px" }} />
           הוסף לעגלה
