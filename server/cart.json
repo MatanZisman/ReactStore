@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "name": "כלב",
+    "image": "./src/img/doggo.png",
+    "price": 150,
+    "quantity": 1
+  }
+]

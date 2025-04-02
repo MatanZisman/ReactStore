@@ -1,5 +1,8 @@
 import { Box, Typography, Button } from "@mui/material";
 import { CartItem } from "../types/CartItem";
+import RemoveIcon from "@mui/icons-material/Remove";
+import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const CartItemButtons: React.FC<{ item: CartItem, refreshCart: () => void}> = ({ item, refreshCart }) => {
 
@@ -81,10 +84,10 @@ const CartItemButtons: React.FC<{ item: CartItem, refreshCart: () => void}> = ({
 
   return (
     <Box sx={cartItemRightStyles}>
-        <Button variant="outlined" onClick= { decreaseItem }>−</Button>
+        <Button onClick= { decreaseItem }><RemoveIcon/></Button>
         <Typography>{item.quantity}</Typography>
-        <Button variant="outlined" onClick={ IncreaseItem }> + </Button>
-        <Button variant="outlined" color="error" onClick={ removeItem }> X </Button>
+        <Button onClick={ IncreaseItem }><AddIcon/></Button>
+        <Button color="error" onClick={ removeItem }><DeleteIcon/></Button>
     </Box>
   );
 };

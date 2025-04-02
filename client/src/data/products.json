@@ -1,159 +1,83 @@
 [
   {
-    "name": "Bamba",
+    "name": "במבה",
     "image": "./src/img/bamba.png",
     "price": 3.5,
-    "description": [
-      "Classic peanut butter snack loved by all ages.",
-      "Crunchy, sweet, and oddly addictive.",
-      "Israeli national treasure in a bag.",
-      "Great for movie nights or quick munchies.",
-      "No kids' party is complete without it."
-    ]
+    "description": "חטיף חמאת בוטנים קלאסי, פריך, מתוק וממכר"
   },
   {
-    "name": "Bread",
+    "name": "לחם",
     "image": "./src/img/bread.png",
     "price": 2.0,
-    "description": [
-      "Freshly baked and still warm inside.",
-      "Soft crumb, crisp crust \u2014 bakery perfection.",
-      "Perfect for sandwiches, toast, or tearing by hand.",
-      "Pairs beautifully with butter and jam.",
-      "Bread so good, you'll skip the meal and eat this."
-    ]
+    "description": "נאפה טרי עם פנים רך וקרום פריך, מושלם לכל ארוחה"
   },
   {
-    "name": "Doggo",
+    "name": "כלב",
     "image": "./src/img/doggo.png",
     "price": 150.0,
-    "description": [
-      "Certified good boy, comes with tail wags included.",
-      "Loyal, loving, and slightly derpy.",
-      "Needs one walk a day and infinite love.",
-      "House-trained and full of cuddles.",
-      "Will follow you to the ends of the Earth for treats."
-    ]
+    "description": "נאמן, אוהב, ותמיד מוכן לחיבוקים ולחטיפים"
   },
   {
-    "name": "Entei",
+    "name": "אנטיי",
     "image": "./src/img/entei.png",
     "price": 999999.0,
-    "description": [
-      "Legendary Fire Pok\u00e9mon, not for the faint of heart.",
-      "Roars like thunder, runs like a volcano.",
-      "Extremely rare and extremely expensive.",
-      "Might burn your entire garden by accident.",
-      "Officially banned from amateur Pok\u00e9mon leagues."
-    ]
+    "description": "פוקימון אש אגדי עם שאגה רועמת ומחיר תואם"
   },
   {
-    "name": "Slippers",
+    "name": "נעלי בית",
     "image": "./src/img/slippers.png",
     "price": 20.0,
-    "description": [
-      "Cloud-soft and absurdly comfy.",
-      "Perfect for chilly mornings or lazy Sundays.",
-      "Stylish enough to wear to your Zoom calls.",
-      "Slides on like butter, feels like a hug.",
-      "Anti-slip sole to avoid embarrassing hallway incidents."
-    ]
+    "description": "רכות כמו ענן, נעימות ומושלמות לימים עצלנים בבית"
   },
   {
-    "name": "Plane",
+    "name": "מטוס",
     "image": "./src/img/plane.png",
     "price": 500000.0,
-    "description": [
-      "A private jet for your plush or midlife crisis.",
-      "Seats 4. Flies like a dream. Taxes like a nightmare.",
-      "Because walking is for peasants.",
-      "Perfect for billionaires, movie villains, or zoo tycoons.",
-      "Fuel not included (neither is a pilot)."
-    ]
+    "description": "מטוס פרטי ליוצאי דופן—מפואר, יקר, ועמוס במיסים"
   },
   {
-    "name": "Messi Shirt",
+    "name": "חולצת מסי",
     "image": "./src/img/messi-shirt.png",
     "price": 120.0,
-    "description": [
-      "Official Messi jersey \u2014 wear greatness on your chest.",
-      "Made from breathable, goal-scoring fabric.",
-      "Boosts your soccer skills by 3% (psychologically).",
-      "Dribble through life like a legend.",
-      "Perfect gift for any football fan."
-    ]
+    "description": "חולצה רשמית של מסי שתגרום לך להרגיש כמו אגדה על המגרש"
   },
   {
-    "name": "RefreshingShum",
+    "name": "שום כתוש",
     "image": "./src/img/refreshingshum.png",
     "price": 5.0,
-    "description": [
-      "No one knows what it is, but it's refreshing!",
-      "Fizz meets mystery in a single sip.",
-      "Tastes like a clean shower and a weird dream.",
-      "Limited edition alien beverage.",
-      "May contain hints of mint, lemon... and other planets."
-    ]
+    "description": "משקה מוגז מסתורי ומרענן בצורה מפתיעה"
   },
   {
-    "name": "Thiccachu",
+    "name": "פיקאצ'ו שמן",
     "image": "./src/img/thiccachu.png",
     "price": 999.0,
-    "description": [
-      "Chunky, lovable electric buddy.",
-      "Pika-sized power in an XL frame.",
-      "Guaranteed to thicc-achu's heart.",
-      "Perfect for snuggles and memes.",
-      "Sparks joy (and static) wherever it goes."
-    ]
+    "description": "חבר חשמלי עגלגל ואהוב שמביא שמחה (וקצת סטטיקה)"
   },
   {
-    "name": "Kuskus",
+    "name": "קוסקוס",
     "image": "./src/img/kuskus.png",
     "price": 8.0,
-    "description": [
-      "Delightfully fluffy North African grain dish.",
-      "Great with stews, veggies, or solo.",
-      "Pre-steamed and full of cozy vibes.",
-      "Faster to cook than rice \u2014 and fancier too.",
-      "Light, versatile, and surprisingly filling."
-    ]
+    "description": "תבשיל דגנים צפון אפריקאי קל להכנה וטעים במיוחד"
   },
   {
-    "name": "Jarboa",
+    "name": "ירבוע",
     "image": "./src/img/jarboa.png",
     "price": 200.0,
-    "description": [
-      "Tiny desert kangaroo-rat with big bounce energy.",
-      "Adorable ears, ninja-level hops.",
-      "Sleeps all day, parties at night.",
-      "Low-maintenance exotic companion.",
-      "Cutest thing you'll ever overpay for."
-    ]
+    "description": "מכרסם מדברי קטן עם קפיצות נינג’ה וחמידות אינסופית"
   },
   {
-    "name": "Coca-Cola",
+    "name": "קוקה-קולה",
     "image": "./src/img/cocacola.png",
     "price": 1.5,
-    "description": [
-      "Classic refreshment since forever.",
-      "Pairs with every meal (and every emotion).",
-      "Open a bottle, spark nostalgia.",
-      "Fizz, sugar, and marketing in a bottle.",
-      "Cold Coke hits different \u2014 you know it's true."
-    ]
+    "description": "משקה קלאסי ומוגז שמשתלב עם כל ארוחה ומצב רוח"
   },
   {
-    "name": "Chocolate",
+    "name": "שוקולד",
     "image": "./src/img/chocolate.png",
     "price": 4.0,
-    "description": [
-      "Rich, melt-in-your-mouth cocoa joy.",
-      "Perfect for gifting or hoarding.",
-      "Instant mood boost, no prescription needed.",
-      "Pairs with wine, coffee, or alone time.",
-      "One bite = one step closer to happiness."
-    ]
+    "description": "שמחה מתוקה שנמסה בפה ותמיד רעיון טוב"
   }
 ]
+
+
   

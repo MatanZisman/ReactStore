@@ -52,7 +52,7 @@ const AnimalCard: React.FC<productCardProps> = ({name, image, price, description
           align="center"
           sx={{ marginBottom: 2 }}
         >
-          {price}$
+          {price.toFixed(2)}₪
         </Typography>
       </CardContent>
     
@@ -83,7 +83,9 @@ const AnimalCard: React.FC<productCardProps> = ({name, image, price, description
       {/* Details Modal */}
       {dialogStatus === "open" && (
         <DetailsDialog
-          name={name}
+          name={name} 
+          image={image} 
+          price={price}
           description={description}
           setDialogStatus={setDialogStatus}
         />

@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { CartItem } from "../types/CartItem";
 import CartItems from "./CartItems";
+import OrderDialog from "./OrderDialog";
 
 const Cart: React.FC<{ wallet: number, setWallet: React.Dispatch<React.SetStateAction<number>> }> = ({ wallet, setWallet}) => {
 
   const [items, setItems] = useState<CartItem[]>([]);
+
+  const [dialogStatus, setDialogStatus] = useState<"open" | "close">("close");
 
   const refreshCart = async () => {
     fetch("http://localhost:5000/cart")
@@ -34,7 +37,7 @@ const Cart: React.FC<{ wallet: number, setWallet: React.Dispatch<React.SetStateA
   
       setWallet(prev => prev - total); // 💸 Deduct!
       refreshCart();
-      alert("✅ Order placed!");
+      setDialogStatus("open");
     } catch (err) {
       console.error("❌", err);
       alert("Order failed.");
@@ -44,40 +47,23 @@ const Cart: React.FC<{ wallet: number, setWallet: React.Dispatch<React.SetStateA
   useEffect(() => {
     refreshCart();
   }, []);
-
-  const renderEmptyMessage = () => {
-    if (items.length === 0) {
-      return <Typography>Your cart is empty.</Typography>;
-    }
-    return null;
-  }
-
-  const calculatePrice = () => (
-    <Typography variant="h6">
-      Total: ${items.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}
-    </Typography>
-  )
   
   return (
-    <Box sx={{ padding: 3 }}>
-      <Typography variant="h4" gutterBottom>
-        🛒 Your Cart
-      </Typography>
+    <Box>
+      { items.length === 0 && (
+         <Typography>העגלה ריקה</Typography>)
+      }
+
+      { items.length > 0 && (
+      <Button variant= "contained" onClick={handleOrder}>
+        הזמן {items.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}₪
+      </Button> )}
+
+      {dialogStatus === "open" && <OrderDialog setDialogStatus={setDialogStatus} />} 
 
       {items.map((item, index) => (
         <CartItems key={index} item={item} refreshCart={refreshCart} />
       ))}
-
-      {renderEmptyMessage()}
-
-      {calculatePrice()}
-
-
-      { items.length > 0 && (
-      <Button variant= "contained" onClick={handleOrder}>
-        Order
-      </Button> )}
-
     </Box>
   );
 };

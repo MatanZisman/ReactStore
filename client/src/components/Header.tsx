@@ -4,11 +4,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const Header: React.FC<{ wallet: number }> = ({ wallet }) => {
   return (
-    <AppBar position="static" color="primary" sx={{ width: "100%"  }}>
+    <AppBar position="static" color="primary" sx={{ width: "100%"}}>
       <Toolbar>
         {/* Logo / Title */}
-        <Typography variant="h6" sx={{ flexGrow: 10, textAlign: "left" }}>
-          <ShoppingCartIcon color= "action" sx={{ fontSize: 25, marginRight: "4px"  }} />
+        <Typography variant="h6" sx={{ flexGrow: 1, textAlign: "left" }}>
+          <ShoppingCartIcon color= "action" sx={{ fontSize: 25 }} />
         </Typography>
         <Typography fontSize = { 20 }> 
             סכום כולל: { wallet.toFixed(2)}₪

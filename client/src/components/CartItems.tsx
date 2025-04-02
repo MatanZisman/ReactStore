@@ -8,11 +8,10 @@ const CartItemComponent: React.FC<{ item: CartItem, refreshCart: () => void }> =
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#F0F8FF",
     padding: 2,
     borderRadius: 2,
     marginBottom: 2,
-    boxShadow: 1,
   };
 
   const cartItemLeftStyles = {
