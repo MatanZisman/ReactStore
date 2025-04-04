@@ -16,7 +16,7 @@ type CartState = {
   increaseQuantity: (product: Product) => void;
 };
 
-export const useCartStore = create<CartState>((set) => ({
+export const useCartStore = create<CartState>((set, get) => ({
     cart: (() => {
     try {
       const storedCart = localStorage.getItem('cart');
@@ -58,6 +58,8 @@ export const useCartStore = create<CartState>((set) => ({
         set({ cart: [] })
     },
 
+    getCartCount: () =>  {get().cart.length},
+
     increaseQuantity: (product: Product) => {
         set((state) => { 
             const cart = [...state.cart];
@@ -91,6 +93,8 @@ export const useCartStore = create<CartState>((set) => ({
             return { cart: updatedCart };
         });
         },
+
+    
           
 }));
 

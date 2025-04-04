@@ -9,12 +9,15 @@ const App: React.FC = () => {
 
   const [wallet, setWallet] = useState(2000000);
 
+  const [loading, setLoading] = React.useState(false);
+
   const [activeTab, setActiveTab] = useState<"home" | "cart">("home");
   return (
     <>
-      <Header wallet = { wallet }/>
+      <Header loading = { loading } wallet = { wallet }/>
       <SubHeader activeTab = { activeTab } setActiveTab={ setActiveTab }/>
-      {activeTab === "home" ? <Home/> : <Cart wallet = { wallet } setWallet = {setWallet}/>}
+      {activeTab === "home" ? <Home/> : <Cart wallet = { wallet } setWallet = {setWallet}
+       setLoading = { setLoading } />}
     </>
   )
 }

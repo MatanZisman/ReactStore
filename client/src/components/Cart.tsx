@@ -3,15 +3,17 @@ import { Box, Typography, Button } from "@mui/material";
 import { useCartStore } from "./Store";
 import CartItems from "./CartItems";
 import OrderDialog from "./OrderDialog";
+import { CartProps } from "../types/CartProps";
 
-const Cart: React.FC<{ wallet: number, setWallet: React.Dispatch<React.SetStateAction<number>> }> = ({ wallet, setWallet}) => {
+const Cart: React.FC<CartProps> = ({ wallet, setWallet, setLoading}) => {
 
   const [dialogStatus, setDialogStatus] = useState<"open" | "close">("close");
 
   const items = useCartStore((state) => state.cart);
-  const clearCart = useCartStore((state) => state.clearCart)
+  const removeFromCart = useCartStore((state) => state.removeFromCart);
 
-  const handleOrder = async () => {
+  const handleOrder = () => {
+    
     const total = items.reduce(
       (acc, item) => acc + item.price * item.quantity,
       0
@@ -22,9 +24,18 @@ const Cart: React.FC<{ wallet: number, setWallet: React.Dispatch<React.SetStateA
       return;
     }
 
-    setWallet(prev => prev - total);
-    setDialogStatus("open");
-    clearCart();
+    setLoading(true);
+    items.forEach((item, index) => {
+      setTimeout(() => {
+        removeFromCart(item);
+        setWallet(prev => prev - ( item.price * item.quantity ));
+        if (index === items.length - 1) {
+          setLoading(false);
+          setDialogStatus("open");
+        }
+      }, index * 200); // 0ms, 200ms, 400ms, etc.
+    });
+
   };
   
   return (
