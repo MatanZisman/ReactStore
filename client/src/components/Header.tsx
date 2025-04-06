@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { AppBar, Toolbar, Typography, LinearProgress, Box } from "@mui/material";
+import { AppBar, Toolbar, Typography, Badge, LinearProgress, Box } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { HeaderProps } from "../types/HeaderProps.ts";
 import { useCartStore } from "./Store.tsx";
@@ -7,6 +7,10 @@ import { useCartStore } from "./Store.tsx";
 const Header: React.FC<HeaderProps> = ({ loading, wallet }) => {
 
   const getCartCount = useCartStore((state) => state.cart.length);
+
+  const cart = useCartStore((state) => state.cart);
+
+  const quantity = cart.reduce((total, item) => total + (item.quantity ?? 1), 0)
 
   const [progress, setProgress] = React.useState(0);
 
@@ -26,12 +30,11 @@ const Header: React.FC<HeaderProps> = ({ loading, wallet }) => {
             return newProgress >= 100 ? 100 : newProgress;
           });
   
-          // When done, reset everything
           if (i === cartCount - 1) {
             setTimeout(() => {
               setShowLoading(false);
               setProgress(0);
-            }, 200); // wait a bit after the final step
+            }, 200); 
           }
         }, i * 200);
       }
@@ -43,19 +46,22 @@ const Header: React.FC<HeaderProps> = ({ loading, wallet }) => {
       <Toolbar>
         {/* Logo / Title */}
         <Typography variant="h6" sx={{ flexGrow: 1, textAlign: "left" }}>
-          <ShoppingCartIcon color= "action" sx={{ fontSize: 25 }} />
+          <Badge badgeContent = { quantity } color = "warning">
+            <ShoppingCartIcon color= "action" sx={{ fontSize: 25 }} />
+          </Badge>
         </Typography>
 
-        { showLoading && (
-          <Box sx={{ width: "50%", marginRight: "90px" }}>
-            <LinearProgress variant="determinate" value={progress} sx={{ height: 8, marginTop: 2, bgcolor: "#d3d3d3" }} />
+        {showLoading && ( 
+          <Box sx={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: 200, }}>
+            <LinearProgress variant="determinate" value={progress} sx={{ bgcolor: "#d3d3d3", borderRadius: 1, height: 6 }} />
           </Box>
-        )}
+          )
+        }
         
         <Typography fontSize = { 20 }> 
             סכום כולל: { wallet.toFixed(2)}₪
         </Typography>
-        </Toolbar>
+      </Toolbar>
     </AppBar>
   );
 };
