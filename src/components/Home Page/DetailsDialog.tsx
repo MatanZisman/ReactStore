@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Fade } from "@mui/material";
-import { DialogProps } from "../types/DialogProps";
-import { useCartStore } from "./Store";
+import { DialogProps } from "../../types/DialogProps";
+import { useCartStore } from "../Zustand/Store";
 
 const detailsDialog : React.FC<DialogProps> = ({ setDialogStatus, name, image, price, description }) => {
 

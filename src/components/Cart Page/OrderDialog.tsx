@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
-import { OrderDialogProps } from "../types/OrderDialogProps";
+import { OrderDialogProps } from "../../types/OrderDialogProps";
 
 const OrderDialog: React.FC< OrderDialogProps > = ({ setDialogStatus }) => {
   return (

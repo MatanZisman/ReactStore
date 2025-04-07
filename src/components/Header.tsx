@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { AppBar, Toolbar, Typography, Badge, LinearProgress, Box } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { HeaderProps } from "../types/HeaderProps.ts";
-import { useCartStore } from "./Store.tsx";
+import { useCartStore } from "./Zustand/Store.tsx";
 
 const Header: React.FC<HeaderProps> = ({ loading, wallet }) => {
 

@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import { Card, CardMedia, CardContent,CardActions, Typography, Button } from "@mui/material";
-import { productCardProps } from "../types/productCardProps";
+import { productCardProps } from "../../types/productCardProps";
 import  DetailsDialog from "./DetailsDialog";
 import InfoIcon from "@mui/icons-material/Info";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useCartStore } from "./Store";
+import { useCartStore } from "../Zustand/Store";
 
 const AnimalCard: React.FC<productCardProps> = ({name, image, price, description}) => {
 

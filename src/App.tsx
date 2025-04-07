@@ -2,8 +2,8 @@ import './App.css'
 import React, {useState} from "react";
 import Header from "./components/Header";
 import SubHeader from './components/SubHeader';
-import Home from './components/Home';
-import Cart from './components/Cart';
+import Home from './components/Home Page/Home';
+import Cart from './components/Cart Page/Cart';
 
 const App: React.FC = () => {
 

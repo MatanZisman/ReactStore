@@ -1,8 +1,8 @@
 import { Box, LinearProgress } from "@mui/material";
-import productsData from "../data/products.json"
+import productsData from "../../data/products.json"
 import AnimalCard from "./Card";
 import React, {useState, useEffect} from "react";
-import { Product } from "../types/Product";
+import { Product } from "../../types/Product";
 
 const Home: React.FC = () => {
 

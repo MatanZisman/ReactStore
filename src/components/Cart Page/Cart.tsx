@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
-import { useCartStore } from "./Store";
+import { useCartStore } from "../Zustand/Store";
 import CartItems from "./CartItems";
 import OrderDialog from "./OrderDialog";
-import { CartProps } from "../types/CartProps";
+import { CartProps } from "../../types/CartProps";
 
 const Cart: React.FC<CartProps> = ({ wallet, setWallet, setLoading}) => {
 
