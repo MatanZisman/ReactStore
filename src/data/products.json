@@ -1,0 +1,83 @@
+[
+  {
+    "name": "במבה",
+    "image": "./src/img/bamba.png",
+    "price": 3.5,
+    "description": "חטיף חמאת בוטנים קלאסי, פריך, מתוק וממכר"
+  },
+  {
+    "name": "לחם",
+    "image": "./src/img/bread.png",
+    "price": 2.0,
+    "description": "נאפה טרי עם פנים רך וקרום פריך, מושלם לכל ארוחה"
+  },
+  {
+    "name": "כלב",
+    "image": "./src/img/doggo.png",
+    "price": 150.0,
+    "description": "נאמן, אוהב, ותמיד מוכן לחיבוקים ולחטיפים"
+  },
+  {
+    "name": "אנטיי",
+    "image": "./src/img/entei.png",
+    "price": 999999.0,
+    "description": "פוקימון אש אגדי עם שאגה רועמת ומחיר תואם"
+  },
+  {
+    "name": "נעלי בית",
+    "image": "./src/img/slippers.png",
+    "price": 20.0,
+    "description": "רכות כמו ענן, נעימות ומושלמות לימים עצלנים בבית"
+  },
+  {
+    "name": "מטוס",
+    "image": "./src/img/plane.png",
+    "price": 500000.0,
+    "description": "מטוס פרטי ליוצאי דופן—מפואר, יקר, ועמוס במיסים"
+  },
+  {
+    "name": "חולצת מסי",
+    "image": "./src/img/messi-shirt.png",
+    "price": 120.0,
+    "description": "חולצה רשמית של מסי שתגרום לך להרגיש כמו אגדה על המגרש"
+  },
+  {
+    "name": "שום כתוש",
+    "image": "./src/img/refreshingshum.png",
+    "price": 5.0,
+    "description": "משקה מוגז מסתורי ומרענן בצורה מפתיעה"
+  },
+  {
+    "name": "פיקאצ'ו שמן",
+    "image": "./src/img/thiccachu.png",
+    "price": 999.0,
+    "description": "חבר חשמלי עגלגל ואהוב שמביא שמחה (וקצת סטטיקה)"
+  },
+  {
+    "name": "קוסקוס",
+    "image": "./src/img/kuskus.png",
+    "price": 8.0,
+    "description": "תבשיל דגנים צפון אפריקאי קל להכנה וטעים במיוחד"
+  },
+  {
+    "name": "ירבוע",
+    "image": "./src/img/jarboa.png",
+    "price": 200.0,
+    "description": "מכרסם מדברי קטן עם קפיצות נינג’ה וחמידות אינסופית"
+  },
+  {
+    "name": "קוקה-קולה",
+    "image": "./src/img/cocacola.png",
+    "price": 1.5,
+    "description": "משקה קלאסי ומוגז שמשתלב עם כל ארוחה ומצב רוח"
+  },
+  {
+    "name": "שוקולד",
+    "image": "./src/img/chocolate.png",
+    "price": 4.0,
+    "description": "שמחה מתוקה שנמסה בפה ותמיד רעיון טוב"
+  }
+]
+
+
+  
