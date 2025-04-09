@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AppBar, Toolbar, Typography, Badge, LinearProgress, Box } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { HeaderProps } from "../types/HeaderProps.ts";
-import { useCartStore } from "./Zustand/Store.tsx";
+import { useCartStore } from "./Store.tsx";
 
-const Header: React.FC<HeaderProps> = ({ loading, wallet }) => {
+export interface HeaderProps 
+{ 
+    loading: boolean;
+    wallet: number;
+}
+
+const Header= (props: HeaderProps) => {
 
   const getCartCount = useCartStore((state) => state.cart.length);
 
@@ -12,12 +17,12 @@ const Header: React.FC<HeaderProps> = ({ loading, wallet }) => {
 
   const quantity = cart.reduce((total, item) => total + (item.quantity ?? 1), 0)
 
-  const [progress, setProgress] = React.useState(0);
+  const [progress, setProgress] = useState(0);
 
-  const [showLoading, setShowLoading] = React.useState(false);
+  const [showLoading, setShowLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (loading) {
+    if (props.loading) {
       const cartCount = getCartCount;
       const progressInterval = 100 / cartCount;
   
@@ -39,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ loading, wallet }) => {
         }, i * 200);
       }
     }
-  }, [loading]);
+  }, [props.loading]);
 
   return (
     <AppBar position="static" color="primary">
@@ -59,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({ loading, wallet }) => {
         }
         
         <Typography fontSize = { 20 }> 
-            סכום כולל: { wallet.toFixed(2)}₪
+            סכום כולל: { props.wallet.toFixed(2)}₪
         </Typography>
       </Toolbar>
     </AppBar>

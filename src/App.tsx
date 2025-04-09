@@ -1,17 +1,19 @@
 import './App.css'
-import React, {useState} from "react";
+import {useState} from "react";
 import Header from "./components/Header";
 import SubHeader from './components/SubHeader';
-import Home from './components/Home Page/Home';
-import Cart from './components/Cart Page/Cart';
+import Home from './pages/Home';
+import Cart from './pages/Cart';
+import { Tab } from './types/Tab'
 
-const App: React.FC = () => {
+const App = () => {
 
   const [wallet, setWallet] = useState(2000000);
 
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const [activeTab, setActiveTab] = useState<"home" | "cart">("home");
+  const [activeTab, setActiveTab] = useState<Tab>("home");
+
   return (
     <>
       <Header loading = { loading } wallet = { wallet }/>

@@ -1,21 +1,15 @@
 import { create } from 'zustand';
-
-type Product = {
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-};
+import { CartItem } from '../types/CartItem';
 
 type CartState = {
-  cart: Product[];
-  addToCart: (product: Product) => void;
-  removeFromCart: (product: Product) => void;
+  cart: CartItem[];
+  addToCart: (product: CartItem) => void;
+  removeFromCart: (product: CartItem) => void;
   clearCart: () => void;
   getCartCount: () => number;
   getCartQuantity: () => number;
-  decreaseQuantity: (product: Product) => void;
-  increaseQuantity: (product: Product) => void;
+  decreaseQuantity: (product: CartItem) => void;
+  increaseQuantity: (product: CartItem) => void;
 };
 
 export const useCartStore = create<CartState>((set, get) => ({
@@ -28,12 +22,12 @@ export const useCartStore = create<CartState>((set, get) => ({
     }
     })(), 
 
-    addToCart: (product: Product) => {
+    addToCart: (product: CartItem) => {
         set((state) => {
           const cart = [...state.cart];
           const existing = cart.find((item) => item.name === product.name);
       
-          let updatedCart: Product[];
+          let updatedCart: CartItem[];
       
           if (existing) {
             existing.quantity += 1; 
@@ -47,7 +41,7 @@ export const useCartStore = create<CartState>((set, get) => ({
         });
       },
 
-    removeFromCart: (product: Product) => {
+    removeFromCart: (product: CartItem) => {
         set((state) => {
             const updatedCart = state.cart.filter((item) => item.name !== product.name);
             localStorage.setItem('cart', JSON.stringify(updatedCart));
@@ -72,7 +66,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       return quantity;
     },
 
-    increaseQuantity: (product: Product) => {
+    increaseQuantity: (product: CartItem) => {
         set((state) => { 
             const updatedCart = [...state.cart];
             const item = updatedCart.find((item) => item.name === product.name);
@@ -82,14 +76,14 @@ export const useCartStore = create<CartState>((set, get) => ({
             }     
         )},
 
-    decreaseQuantity: (product: Product) => {
+    decreaseQuantity: (product: CartItem) => {
         set((state) => {
             const cart = [...state.cart];
             const item = cart.find((item) => item.name === product.name);
         
             if (!item) return { cart };
         
-                let updatedCart: Product[];
+                let updatedCart: CartItem[];
         
             if (item.quantity === 1) {
 

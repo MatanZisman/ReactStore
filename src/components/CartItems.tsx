@@ -1,9 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import CartItemButtons from "./CartItemButtons";
-import { CartItem } from "../../types/CartItem";
+import { CartItem } from "../types/CartItem";
 
-const CartItemComponent: React.FC<{ item: CartItem }> = ({ item }) => {
-
+const CartItemComponent = (props: { item: CartItem }) => {
   const cartItemBoxStyles = {
     display: "flex",
     alignItems: "center",
@@ -30,15 +29,14 @@ const CartItemComponent: React.FC<{ item: CartItem }> = ({ item }) => {
   return (
     <Box sx={cartItemBoxStyles}>
       <Box sx={cartItemLeftStyles}>
-        <img src={item.image} alt={item.name} style={imageStyles} />
+        <img src={props.item.image} alt={props.item.name} style={imageStyles} />
         <Box>
-          <Typography variant="h6">{item.name}</Typography>
-          <Typography variant="body2">${item.price.toFixed(2)}</Typography>
+          <Typography variant="h6">{props.item.name}</Typography>
+          <Typography variant="body2">${props.item.price.toFixed(2)}</Typography>
         </Box>
       </Box>
 
-      < CartItemButtons item = { item }/>
-
+      <CartItemButtons item={props.item} />
     </Box>
   );
 };
