@@ -1,7 +1,7 @@
 
-# 🦁 ZooStore
+# ReactStore
 
-A quirky and fun e-commerce app built with React, Vite, and Material UI. Welcome to the ZooStore — where you can buy anything from chocolate and slippers to Pokémon and private planes.
+A quirky and fun e-commerce app built with React, Vite, and Material UI. 
 
 ## 🚀 Features
 
