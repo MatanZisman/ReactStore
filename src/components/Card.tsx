@@ -16,7 +16,7 @@ import {useCartStore} from "./Store";
 const AnimalCard = (props: Product) => {
   const [dialogStatus, setDialogStatus] = useState<boolean>(false);
 
-  const addToCart = useCartStore((state) => state.addToCart);
+  const { addToCart } = useCartStore();
 
   return (
     <Card

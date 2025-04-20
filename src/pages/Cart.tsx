@@ -13,14 +13,20 @@ interface CartProps {
 const Cart = (props: CartProps) => {
   const [dialogStatus, setDialogStatus] = useState<boolean>(false);
 
-  const items = useCartStore((state) => state.cart);
-  const removeFromCart = useCartStore((state) => state.removeFromCart);
+  const {cart} = useCartStore();
+  const {cartIsEmpty} = useCartStore();
+  const {removeFromCart} = useCartStore();
 
-  const handleOrder = () => {
-    const total = items.reduce(
+  const calculateTotal = () => {
+    const total = cart.reduce(
       (acc, item) => acc + item.price * item.quantity,
       0,
     );
+    return total;
+  }
+
+  const handleOrder = () => {
+    const total = calculateTotal();
 
     if (props.wallet < total) {
       alert("אין מספיק כסף");
@@ -28,11 +34,11 @@ const Cart = (props: CartProps) => {
     }
 
     props.setLoading(true);
-    items.forEach((item, index) => {
+    cart.forEach((item, index) => {
       setTimeout(() => {
         removeFromCart(item);
         props.setWallet((prev) => prev - item.price * item.quantity);
-        if (index === items.length - 1) {
+        if (index === cart.length - 1) {
           props.setLoading(false);
           setDialogStatus(true);
         }
@@ -42,14 +48,12 @@ const Cart = (props: CartProps) => {
 
   return (
     <Box>
-      {items.length === 0 && <Typography>העגלה ריקה</Typography>}
+      {cartIsEmpty() && <Typography>העגלה ריקה</Typography>}
 
-      {items.length > 0 && (
+      {!(cartIsEmpty()) && (
         <Button variant="contained" onClick={handleOrder}>
           הזמן{" "}
-          {items
-            .reduce((acc, item) => acc + item.price * item.quantity, 0)
-            .toFixed(2)}
+          {calculateTotal().toFixed(2)}
           ₪
         </Button>
       )}
@@ -58,7 +62,7 @@ const Cart = (props: CartProps) => {
         <OrderDialog setDialogStatus={setDialogStatus} />
       )}
 
-      {items.map((item, index) => (
+      {cart.map((item, index) => (
         <CartItems key={index} item={item} />
       ))}
     </Box>

@@ -1,5 +1,5 @@
 import {create} from "zustand";
-import {CartItem} from "../types/CartItem";
+import {CartItem} from "@/types/CartItem";
 
 type CartState = {
   cart: CartItem[];
@@ -8,6 +8,7 @@ type CartState = {
   clearCart: () => void;
   getCartCount: () => number;
   getCartQuantity: () => number;
+  cartIsEmpty: () => boolean;
   decreaseQuantity: (product: CartItem) => void;
   increaseQuantity: (product: CartItem) => void;
 };
@@ -24,30 +25,27 @@ export const useCartStore = create<CartState>((set, get) => ({
 
   addToCart: (product: CartItem) => {
     set((state) => {
-      const cart = [...state.cart];
+      let cart = [...state.cart];
       const existing = cart.find((item) => item.name === product.name);
-
-      let updatedCart: CartItem[];
 
       if (existing) {
         existing.quantity += 1;
-        updatedCart = cart;
       } else {
-        updatedCart = [...cart, { ...product, quantity: 1 }];
+        cart = [...cart, { ...product, quantity: 1 }];
       }
 
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-      return { cart: updatedCart };
+      localStorage.setItem("cart", JSON.stringify(cart));
+      return { cart };
     });
   },
 
   removeFromCart: (product: CartItem) => {
     set((state) => {
-      const updatedCart = state.cart.filter(
+      let cart = state.cart.filter(
         (item) => item.name !== product.name,
       );
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-      return { cart: updatedCart };
+      localStorage.setItem("cart", JSON.stringify(cart));
+      return { cart };
     });
   },
 
@@ -58,46 +56,39 @@ export const useCartStore = create<CartState>((set, get) => ({
 
   getCartCount: () => get().cart.length,
 
+  cartIsEmpty: () => get().cart.length === 0,
+
   getCartQuantity: () => {
-    let quantity = 0;
-    get().cart.forEach((item) => {
-      if (item) {
-        quantity = quantity + item.quantity;
-      }
-    });
-    return quantity;
-  },
+    return get().cart.reduce((total, item) => total + item.quantity, 0);
+  },  
 
   increaseQuantity: (product: CartItem) => {
     set((state) => {
-      const updatedCart = [...state.cart];
-      const item = updatedCart.find((item) => item.name === product.name);
+      let cart = [...state.cart];
+      const item = cart.find((item) => item.name === product.name);
       if (item) {
         item.quantity = item.quantity + 1;
       }
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-      return { cart: updatedCart };
+      localStorage.setItem("cart", JSON.stringify(cart));
+      return { cart: cart };
     });
   },
 
   decreaseQuantity: (product: CartItem) => {
     set((state) => {
-      const cart = [...state.cart];
+      let cart = [...state.cart];
       const item = cart.find((item) => item.name === product.name);
 
       if (!item) return { cart };
 
-      let updatedCart: CartItem[];
-
       if (item.quantity === 1) {
-        updatedCart = cart.filter((i) => i.name !== item.name);
+        cart = cart.filter((i) => i.name !== item.name);
       } else {
         item.quantity -= 1;
-        updatedCart = cart;
       }
 
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-      return { cart: updatedCart };
+      localStorage.setItem("cart", JSON.stringify(cart));
+      return { cart };
     });
   },
 }));

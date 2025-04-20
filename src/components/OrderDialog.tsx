@@ -6,7 +6,7 @@ export interface OrderDialogProps {
 
 const OrderDialog = (props: OrderDialogProps) => {
   return (
-    <Dialog open={true}>
+    <Dialog open>
       <DialogTitle sx={{ textAlign: "right" }}>!תתחדש/י</DialogTitle>
       <DialogActions sx={{ justifyContent: "flex-start" }}>
         <Button onClick={() => props.setDialogStatus(false)}>סגור</Button>

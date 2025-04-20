@@ -1,8 +1,8 @@
 import {Box, LinearProgress} from "@mui/material";
-import productsData from "../data/products.json";
-import AnimalCard from "../components/Card";
+import productsData from "@/data/products.json";
+import AnimalCard from "@/components/Card";
 import {useState, useEffect} from "react";
-import {Product} from "../types/Product";
+import {Product} from "@/types/Product";
 
 const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -29,7 +29,7 @@ const Home = () => {
           }}
         >
           <LinearProgress
-            sx={{ bgcolor: "#d3d3d3", borderRadius: 1, height: 6 }}
+            sx={{ bgcolor: "#d3d3d3", borderRadius: '1px', height: '6px' }}
           />
         </Box>
       ) : (
