@@ -1,12 +1,10 @@
 import React, {useState} from "react";
 import {Box, Typography, Button} from "@mui/material";
-import {useCartStore} from "../components/Store";
-import CartItems from "../components/CartItems";
-import OrderDialog from "../components/OrderDialog";
+import {useCartStore} from "@/components/Store";
+import CartItems from "@/components/CartItems";
+import OrderDialog from "@/components/OrderDialog";
 
 interface CartProps {
-  wallet: number;
-  setWallet: React.Dispatch<React.SetStateAction<number>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -14,6 +12,8 @@ const Cart = (props: CartProps) => {
   const [dialogStatus, setDialogStatus] = useState<boolean>(false);
 
   const {cart} = useCartStore();
+  const {setWallet} = useCartStore();
+  const {inWallet} = useCartStore(); 
   const {cartIsEmpty} = useCartStore();
   const {removeFromCart} = useCartStore();
 
@@ -28,7 +28,7 @@ const Cart = (props: CartProps) => {
   const handleOrder = () => {
     const total = calculateTotal();
 
-    if (props.wallet < total) {
+    if (inWallet < total) {
       alert("אין מספיק כסף");
       return;
     }
@@ -36,13 +36,13 @@ const Cart = (props: CartProps) => {
     props.setLoading(true);
     cart.forEach((item, index) => {
       setTimeout(() => {
+        setWallet(item);
         removeFromCart(item);
-        props.setWallet((prev) => prev - item.price * item.quantity);
         if (index === cart.length - 1) {
           props.setLoading(false);
           setDialogStatus(true);
         }
-      }, index * 200); // 0ms, 200ms, 400ms, etc.
+      }, index * 200); 
     });
   };
 

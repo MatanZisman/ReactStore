@@ -14,7 +14,7 @@ const CartItemButtons = (props: { item: CartItem }) => {
     <Box sx={{
       display: "flex",
       alignItems: "center",
-      gap: 1,
+      gap: "8px",
       }}>
       <Button onClick={() => decreaseQuantity(props.item)}>
         <RemoveIcon />

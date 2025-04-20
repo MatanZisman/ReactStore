@@ -1,6 +1,6 @@
 import {Box, Typography} from "@mui/material";
-import CartItemButtons from "./CartItemButtons";
-import {CartItem} from "../types/CartItem";
+import CartItemButtons from "@/components/CartItemButtons";
+import {CartItem} from "@/types/CartItem";
 
 const CartItemComponent = (props: { item: CartItem }) => {
   const cartItemBoxStyles = {
@@ -8,20 +8,20 @@ const CartItemComponent = (props: { item: CartItem }) => {
     alignItems: "center",
     justifyContent: "space-between",
     backgroundColor: "#F0F8FF",
-    padding: 2,
-    borderRadius: 2,
-    marginBottom: 2,
+    padding: "1rem",
+    borderRadius: "0.12rem",
+    marginBottom: "0.12rem",
   };
 
   const cartItemLeftStyles = {
     display: "flex",
     alignItems: "center",
-    gap: 2,
+    gap: "2rem",
   };
 
   const imageStyles: React.CSSProperties = {
-    width: 70,
-    height: 70,
+    width: "70px",
+    height: "70px",
     objectFit: "contain",
     borderRadius: "10%",
   };

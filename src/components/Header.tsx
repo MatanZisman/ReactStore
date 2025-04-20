@@ -6,16 +6,13 @@ import {useCartStore} from "@/components/Store";
 export interface HeaderProps 
 { 
     loading: boolean;
-    wallet: number;
 }
 
 const Header= (props: HeaderProps) => {
 
-  const getCartCount = useCartStore((state) => state.cart.length);
+  const {getCartCount, inWallet, getCartQuantity} = useCartStore();
 
-  const cart = useCartStore((state) => state.cart);
-
-  const quantity = cart.reduce((total, item) => total + (item.quantity ?? 1), 0)
+  const quantity = getCartQuantity();
 
   const [progress, setProgress] = useState(0);
 
@@ -23,7 +20,7 @@ const Header= (props: HeaderProps) => {
 
   useEffect(() => {
     if (props.loading) {
-      const cartCount = getCartCount;
+      const cartCount = getCartCount();
       const progressInterval = 100 / cartCount;
   
       setShowLoading(true);
@@ -52,19 +49,19 @@ const Header= (props: HeaderProps) => {
         {/* Logo / Title */}
         <Typography variant="h6" sx={{ flexGrow: 1, textAlign: "left" }}>
           <Badge badgeContent = { quantity } color = "warning">
-            <ShoppingCartIcon color= "action" sx={{ fontSize: 25 }} />
+            <ShoppingCartIcon color= "action" sx={{ fontSize: "25px" }} />
           </Badge>
         </Typography>
 
         {showLoading && ( 
-          <Box sx={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: 200, }}>
-            <LinearProgress variant="determinate" value={progress} sx={{ bgcolor: "#d3d3d3", borderRadius: 1, height: 6 }} />
+          <Box sx={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "200px", }}>
+            <LinearProgress variant="determinate" value={progress} sx={{ bgcolor: "#d3d3d3", borderRadius: "1px", height: "6px" }} />
           </Box>
           )
         }
         
-        <Typography fontSize = { 20 }> 
-            סכום כולל: { props.wallet.toFixed(2)}₪
+        <Typography fontSize = { "20px" }> 
+            סכום כולל: { inWallet.toFixed(2)}₪
         </Typography>
       </Toolbar>
     </AppBar>

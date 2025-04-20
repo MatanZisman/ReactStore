@@ -13,7 +13,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {useCartStore} from "./Store";
 
-const AnimalCard = (props: Product) => {
+const ItemCard = (props: Product) => {
   const [dialogStatus, setDialogStatus] = useState<boolean>(false);
 
   const { addToCart } = useCartStore();
@@ -22,10 +22,10 @@ const AnimalCard = (props: Product) => {
     <Card
       elevation={1}
       sx={{
-        width: 300,
-        height: 345,
+        width: "18.75rem",
+        height: "21.5625rem",
         margin: "10px",
-        borderRadius: 2,
+        borderRadius: "2px",
         display: "inline-flex",
         flexDirection: "column",
       }}
@@ -34,7 +34,7 @@ const AnimalCard = (props: Product) => {
         component="img"
         alt={props.name}
         image={props.image}
-        sx={{ height: 140, width: "100%" }}
+        sx={{ height: "140px", width: "100%" }}
       />
 
       <CardContent sx={{ flexGrow: 1 }}>
@@ -42,7 +42,7 @@ const AnimalCard = (props: Product) => {
           variant="h5"
           component="div"
           align="center"
-          sx={{ marginBottom: 1 }}
+          sx={{ marginBottom: "1rem" }}
         >
           {props.name}
         </Typography>
@@ -50,13 +50,13 @@ const AnimalCard = (props: Product) => {
           variant="h6"
           color="textSecondary"
           align="center"
-          sx={{ marginBottom: 2 }}
+          sx={{ marginBottom: "2rem" }}
         >
           {props.price.toFixed(2)}₪
         </Typography>
       </CardContent>
 
-      <CardActions sx={{ justifyContent: "space-between", paddingX: 2 }}>
+      <CardActions sx={{ justifyContent: "space-between", paddingX: "16px" }}>
         <Button
           variant="contained"
           sx={{
@@ -65,7 +65,7 @@ const AnimalCard = (props: Product) => {
           }}
           onClick={() => setDialogStatus(true)}
         >
-          <InfoIcon sx={{ fontSize: 16, marginRight: "4px" }} />
+          <InfoIcon sx={{ fontSize: "16px", marginRight: "4px" }} />
           פרטים
         </Button>
 
@@ -81,7 +81,7 @@ const AnimalCard = (props: Product) => {
             })
           }
         >
-          <ShoppingCartIcon sx={{ fontSize: 16, marginRight: "4px" }} />
+          <ShoppingCartIcon sx={{ fontSize: "16px", marginRight: "4px" }} />
           הוסף לעגלה
         </Button>
       </CardActions>
@@ -99,4 +99,4 @@ const AnimalCard = (props: Product) => {
   );
 };
 
-export default AnimalCard;
+export default ItemCard;

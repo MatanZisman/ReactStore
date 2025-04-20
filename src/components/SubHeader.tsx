@@ -1,14 +1,21 @@
 import {AppBar, Button} from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import LineDecoration from "./LineDecoration";
+import LineDecoration from "@/components/LineDecoration";
+import {Tab} from "@/types/Tab";
 
 export interface SubHeaderProps {
-  activeTab: "home" | "cart";
-  setActiveTab: (tab: "home" | "cart") => void;
+  activeTab: Tab;
+  setActiveTab: (tab: Tab) => void;
 }
 
+
 const SubHeader = (props: SubHeaderProps) => {
+
+  const isHomeActive = props.activeTab === "home";
+  const cartIconColor = isHomeActive ? "action" : "primary";
+  const homeIconColor = isHomeActive ? "primary" : "action";
+
   return (
     <AppBar
       position="static"
@@ -16,7 +23,6 @@ const SubHeader = (props: SubHeaderProps) => {
       elevation={0}
       sx={{ backgroundColor: "transparent}}>", width: "100%" }}
     >
-      {/* Navigation Links */}
       <div style={{ textAlign: "right", position: "relative" }}>
         <Button
           variant="outlined"
@@ -28,7 +34,7 @@ const SubHeader = (props: SubHeaderProps) => {
           }}
         >
           <ShoppingCartIcon
-            color={props.activeTab === "home" ? "action" : "primary"}
+            color={cartIconColor}
             sx={{ fontSize: 25, margin: "10px" }}
           />
         </Button>
@@ -42,8 +48,8 @@ const SubHeader = (props: SubHeaderProps) => {
           }}
         >
           <HomeIcon
-            color={props.activeTab === "home" ? "primary" : "action"}
-            sx={{ fontSize: 25, margin: "10px" }}
+            color={homeIconColor}
+            sx={{ fontSize: "25px", margin: "10px" }}
           />
         </Button>
         <LineDecoration activeTab={props.activeTab} />
