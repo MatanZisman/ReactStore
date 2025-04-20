@@ -1,8 +1,8 @@
-import { Box, LinearProgress } from "@mui/material";
+import {Box, LinearProgress} from "@mui/material";
 import productsData from "../data/products.json";
 import AnimalCard from "../components/Card";
-import { useState, useEffect } from "react";
-import { Product } from "../types/Product";
+import {useState, useEffect} from "react";
+import {Product} from "../types/Product";
 
 const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);

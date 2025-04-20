@@ -1,14 +1,15 @@
-import { Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
+import {Button, Dialog, DialogTitle, DialogActions} from "@mui/material";
 
-export interface OrderDialogProps 
-{ setDialogStatus: (tab: "open" | "close") => void }
+export interface OrderDialogProps {
+  setDialogStatus: (status: boolean) => void;
+}
 
-const OrderDialog= (props: OrderDialogProps) => {
+const OrderDialog = (props: OrderDialogProps) => {
   return (
     <Dialog open={true}>
       <DialogTitle sx={{ textAlign: "right" }}>!תתחדש/י</DialogTitle>
       <DialogActions sx={{ justifyContent: "flex-start" }}>
-        <Button onClick={() => props.setDialogStatus("close")}>סגור</Button>
+        <Button onClick={() => props.setDialogStatus(false)}>סגור</Button>
       </DialogActions>
     </Dialog>
   );

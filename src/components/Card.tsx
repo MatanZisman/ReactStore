@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import {
   Card,
   CardMedia,
@@ -7,14 +7,14 @@ import {
   Typography,
   Button,
 } from "@mui/material";
-import { Product } from "../types/Product";
+import {Product} from "../types/Product";
 import DetailsDialog from "./DetailsDialog";
 import InfoIcon from "@mui/icons-material/Info";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useCartStore } from "./Store";
+import {useCartStore} from "./Store";
 
 const AnimalCard = (props: Product) => {
-  const [dialogStatus, setDialogStatus] = useState<"open" | "close">("close");
+  const [dialogStatus, setDialogStatus] = useState<boolean>(false);
 
   const addToCart = useCartStore((state) => state.addToCart);
 
@@ -63,7 +63,7 @@ const AnimalCard = (props: Product) => {
             backgroundColor: "#9c27b0",
             "&:hover": { backgroundColor: "#6a1b9a" },
           }}
-          onClick={() => setDialogStatus("open")}
+          onClick={() => setDialogStatus(true)}
         >
           <InfoIcon sx={{ fontSize: 16, marginRight: "4px" }} />
           פרטים
@@ -73,7 +73,12 @@ const AnimalCard = (props: Product) => {
           variant="contained"
           color="primary"
           onClick={() =>
-            addToCart({ name: props.name, price: props.price, quantity: 1, image: props.image })
+            addToCart({
+              name: props.name,
+              price: props.price,
+              quantity: 1,
+              image: props.image,
+            })
           }
         >
           <ShoppingCartIcon sx={{ fontSize: 16, marginRight: "4px" }} />
@@ -81,7 +86,7 @@ const AnimalCard = (props: Product) => {
         </Button>
       </CardActions>
 
-      {dialogStatus === "open" && (
+      {dialogStatus === true && (
         <DetailsDialog
           name={props.name}
           image={props.image}

@@ -1,9 +1,9 @@
 import { Box, Typography, Button } from "@mui/material";
-import { CartItem } from "../types/CartItem";
+import { CartItem } from "@/types/CartItem";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useCartStore } from "./Store";
+import { useCartStore } from "@/components/Store";
 
 const CartItemButtons = (props: { item: CartItem }) => {
   const removeFromCart = useCartStore((state) => state.removeFromCart);

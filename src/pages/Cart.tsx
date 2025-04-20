@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Box, Typography, Button } from "@mui/material";
-import { useCartStore } from "../components/Store";
+import React, {useState} from "react";
+import {Box, Typography, Button} from "@mui/material";
+import {useCartStore} from "../components/Store";
 import CartItems from "../components/CartItems";
 import OrderDialog from "../components/OrderDialog";
 
@@ -11,7 +11,7 @@ interface CartProps {
 }
 
 const Cart = (props: CartProps) => {
-  const [dialogStatus, setDialogStatus] = useState<"open" | "close">("close");
+  const [dialogStatus, setDialogStatus] = useState<boolean>(false);
 
   const items = useCartStore((state) => state.cart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
@@ -34,7 +34,7 @@ const Cart = (props: CartProps) => {
         props.setWallet((prev) => prev - item.price * item.quantity);
         if (index === items.length - 1) {
           props.setLoading(false);
-          setDialogStatus("open");
+          setDialogStatus(true);
         }
       }, index * 200); // 0ms, 200ms, 400ms, etc.
     });
@@ -54,7 +54,7 @@ const Cart = (props: CartProps) => {
         </Button>
       )}
 
-      {dialogStatus === "open" && (
+      {dialogStatus === true && (
         <OrderDialog setDialogStatus={setDialogStatus} />
       )}
 
