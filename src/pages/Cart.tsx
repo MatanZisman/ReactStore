@@ -11,11 +11,7 @@ interface CartProps {
 const Cart = (props: CartProps) => {
   const [dialogStatus, setDialogStatus] = useState<boolean>(false);
 
-  const {cart} = useCartStore();
-  const {setWallet} = useCartStore();
-  const {inWallet} = useCartStore(); 
-  const {cartIsEmpty} = useCartStore();
-  const {removeFromCart} = useCartStore();
+  const {cart, setWallet, inWallet, cartIsEmpty, removeFromCart} = useCartStore();
 
   const calculateTotal = () => {
     const total = cart.reduce(

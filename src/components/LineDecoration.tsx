@@ -1,5 +1,5 @@
 import {Box} from "@mui/material";
-import {Tab} from "@/components/types/Tab";
+import {Tab} from "@/types/Tab";
 
 const LineDecoration = (props: { activeTab: Tab }) => {
   return (

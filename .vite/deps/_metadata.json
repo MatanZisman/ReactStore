@@ -1,8 +1,58 @@
 {
-  "hash": "434bbe79",
-  "configHash": "d6aaf58b",
-  "lockfileHash": "e3b0c442",
-  "browserHash": "155b4d46",
-  "optimized": {},
-  "chunks": {}
+  "hash": "5c1db7cd",
+  "configHash": "728cb53f",
+  "lockfileHash": "51c56c15",
+  "browserHash": "7bf4f939",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "3974d746",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "9e584dc3",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "83affedb",
+      "needsInterop": true
+    },
+    "@mui/material": {
+      "src": "../../node_modules/@mui/material/index.js",
+      "file": "@mui_material.js",
+      "fileHash": "bf07c105",
+      "needsInterop": false
+    },
+    "@mui/icons-material/Home": {
+      "src": "../../node_modules/@mui/icons-material/esm/Home.js",
+      "file": "@mui_icons-material_Home.js",
+      "fileHash": "2ccb7c4c",
+      "needsInterop": false
+    },
+    "@mui/icons-material/ShoppingCart": {
+      "src": "../../node_modules/@mui/icons-material/esm/ShoppingCart.js",
+      "file": "@mui_icons-material_ShoppingCart.js",
+      "fileHash": "f7bc9e86",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-5AR7P7EP": {
+      "file": "chunk-5AR7P7EP.js"
+    },
+    "chunk-C6WWHQR7": {
+      "file": "chunk-C6WWHQR7.js"
+    },
+    "chunk-HOEDZQSX": {
+      "file": "chunk-HOEDZQSX.js"
+    },
+    "chunk-AY6LENDD": {
+      "file": "chunk-AY6LENDD.js"
+    }
+  }
 }

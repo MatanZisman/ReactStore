@@ -7,18 +7,17 @@ import Cart from "./pages/Cart";
 import {Tab} from "./types/Tab";
 
 const App = () => {
-  const [wallet, setWallet] = useState(2000000);
   const [loading, setLoading] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<Tab>("home");
 
   const pages: Record<Tab, React.ReactNode> = {
     home: <Home />,
-    cart: <Cart wallet={wallet} setWallet={setWallet} setLoading={setLoading} />,
+    cart: <Cart setLoading={setLoading} />,
   };
 
   return (
     <>
-      <Header loading={loading} wallet={wallet} />
+      <Header loading={loading} />
       <SubHeader activeTab={activeTab} setActiveTab={setActiveTab} />
       {pages[activeTab]}
     </>

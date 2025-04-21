@@ -36,7 +36,7 @@ const Header= (props: HeaderProps) => {
             setTimeout(() => {
               setShowLoading(false);
               setProgress(0);
-            }, 200); 
+            }, 200);
           }
         }, i * 200);
       }
@@ -46,19 +46,19 @@ const Header= (props: HeaderProps) => {
   return (
     <AppBar position="static" color="primary">
       <Toolbar>
-        {/* Logo / Title */}
         <Typography variant="h6" sx={{ flexGrow: 1, textAlign: "left" }}>
           <Badge badgeContent = { quantity } color = "warning">
             <ShoppingCartIcon color= "action" sx={{ fontSize: "25px" }} />
           </Badge>
         </Typography>
 
-        {showLoading && ( 
-          <Box sx={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "200px", }}>
-            <LinearProgress variant="determinate" value={progress} sx={{ bgcolor: "#d3d3d3", borderRadius: "1px", height: "6px" }} />
-          </Box>
-          )
-        }
+        
+        <Box sx={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "15rem",
+             height: "2rem", bgcolor: "white", opacity: "70%", alignItems: "center", display: "flex", justifyContent: "center", 
+             borderRadius: "3px", visibility: showLoading ? "visible" : "hidden"}}>
+          <LinearProgress variant="determinate" value={progress} sx={{ borderRadius: "1px", width: "90%" }}/>
+        </Box>
+  
         
         <Typography fontSize = { "20px" }> 
             סכום כולל: { inWallet.toFixed(2)}₪
